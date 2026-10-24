@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f5ef">
+  <title>Facilities Desk — WattWise</title>
+  <script>if(['localhost','127.0.0.1'].includes(location.hostname)&&location.port!=='3000'){location.replace(`http://127.0.0.1:3000${location.pathname}${location.search}${location.hash}`)}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="theme.css">
+  <script src="admin.js?v=20261025-5" defer></script>
+  <script src="theme.js?v=20261025-5" defer></script>
+</head>
+<body class="admin-page">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <a class="admin-brand" href="admin.html"><span class="brand-symbol">ϟ</span><span>watt<span>wise</span></span></a>
+      <div class="side-caption">FACILITIES WORKSPACE</div>
+      <nav class="admin-nav" aria-label="Facilities navigation">
+        <a class="selected" href="#overview"><span>▦</span> Overview</a>
+        <a href="#queue"><span>◉</span> Report queue <b id="navOpenCount">0</b></a>
+        <a href="#buildings"><span>⌂</span> Buildings</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="campus-chip"><span class="live-dot"></span><span><small>ACTIVE CAMPUS</small><b>HackCult University</b></span></div>
+        <div class="sidebar-user"><div class="admin-avatar">CF</div><span><b id="adminName">Campus Facilities</b><small>Facilities admin</small></span><button id="signOut" aria-label="Sign out" title="Sign out">↗</button></div>
+      </div>
+    </aside>
+    <main class="admin-main" id="overview">
+      <header class="admin-topbar"><div class="mobile-brand"><span class="brand-symbol">ϟ</span> watt<span>wise</span></div><div class="crumb">Facilities <span>›</span> <b>Overview</b></div><div class="top-right"><span class="today" id="today"></span><span class="demo-pill">LIVE CAMPUS DATA</span></div></header>
+      <section class="welcome-row"><div><div class="overline">CAMPUS RESPONSE DESK</div><h1>Good day, <span id="welcomeName">team</span><i>✳</i></h1><p>Every report is a chance to make campus work a little smarter.</p></div><a class="jump-link" href="#queue">Go to report queue <span>↓</span></a></section>
+      <section class="metric-grid" aria-label="Report overview">
+        <article class="metric-card metric-open"><div class="metric-label">Needs attention <span>◉</span></div><div class="metric-value" id="openMetric">0</div><div class="metric-foot"><i class="metric-dot open-dot"></i> New and waiting for review</div></article>
+        <article class="metric-card"><div class="metric-label">Being checked <span>◷</span></div><div class="metric-value" id="checkMetric">0</div><div class="metric-foot"><i class="metric-dot check-dot"></i> In progress with your team</div></article>
+        <article class="metric-card"><div class="metric-label">Resolved <span>✓</span></div><div class="metric-value" id="doneMetric">0</div><div class="metric-foot"><i class="metric-dot done-dot"></i> Closed with a response</div></article>
+        <article class="metric-card metric-total"><div class="metric-label">Reports this campus <span>✳</span></div><div class="metric-value" id="totalMetric">0</div><div class="metric-foot">Across all campus buildings</div></article>
+      </section>
+      <section class="admin-content-grid">
+        <section class="card queue-card" id="queue">
+          <div class="card-heading"><div><div class="section-kicker">TAKE ACTION</div><h2>Report queue</h2><p>Review an issue, update its status, and leave a note for the reporter.</p></div><button class="refresh-btn" id="refreshBtn" title="Refresh reports">↻</button></div>
+          <div class="queue-tools"><div class="filter-tabs" role="tablist" aria-label="Filter reports"><button class="filter-tab active" data-filter="all">All <span id="allCount">0</span></button><button class="filter-tab" data-filter="open">Open <span id="openCount">0</span></button><button class="filter-tab" data-filter="check">Checking <span id="checkCount">0</span></button><button class="filter-tab" data-filter="done">Resolved <span id="doneCount">0</span></button></div><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search reports" aria-label="Search reports"></label></div>
+          <div class="queue-head"><span>ISSUE</span><span>BUILDING / REPORTER</span><span>STATUS</span><span>REPORTED</span><span></span></div>
+          <div class="queue-list" id="queueList"></div>
+          <div class="queue-footer"><span id="queueSummary">Showing 0 reports</span><span>Updates are saved to MySQL</span></div>
+        </section>
+        <aside class="insights-column">
+          <section class="card building-card" id="buildings"><div class="card-heading compact"><div><div class="section-kicker">WHERE TO LOOK</div><h2>Building pulse</h2></div><span class="building-icon">⌂</span></div><p class="card-description">Open reports grouped by location.</p><div id="buildingList" class="building-list"></div></section>
+          <section class="team-card"><div class="team-ornament">✳</div><div class="team-kicker">CLOSE THE LOOP</div><h3>A clear update builds trust.</h3><p>When you resolve a report, add a short note so the person who spotted it knows what changed.</p><div class="team-foot"><span class="team-avatar">↗</span><span>Keep the campus in the loop</span></div></section>
+          <section class="card activity-card"><div class="card-heading compact"><div><div class="section-kicker">LATEST CHANGES</div><h2>Activity</h2></div></div><div id="activityFeed" class="activity-feed"></div></section>
+        </aside>
+      </section>
+      <footer class="admin-footer"><span>WattWise Campus · Facilities workspace</span><span>HackCult prototype · sample campus data</span></footer>
+    </main>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden><aside class="report-drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><div class="drawer-top"><div><span class="drawer-label">REPORT DETAILS</span><span id="drawerStatus" class="status-badge"></span></div><button class="drawer-close" id="drawerClose" aria-label="Close">×</button></div><div class="drawer-icon" id="drawerIcon">⚡</div><h2 id="drawerTitle">Report details</h2><p class="drawer-location" id="drawerLocation"></p><div class="reported-card"><div class="reported-avatar" id="reporterInitials">?</div><div><small>REPORTED BY</small><b id="reporterName">Campus member</b><span id="reportedTime">Just now</span></div></div><div class="detail-block"><label>WHAT WAS NOTICED</label><p id="drawerDetails">—</p></div><div class="detail-block" id="attachmentBlock" hidden><label>PHOTO EVIDENCE</label><img id="reportPhoto" class="report-photo" alt="Photo evidence submitted with this report"></div><div class="detail-block" id="resolutionBlock" hidden><label>RESPONSE TO REPORTER</label><p id="drawerResponse"></p></div><form id="updateForm"><label class="form-label" for="statusSelect">Update status</label><select id="statusSelect"><option value="open">Open · Needs attention</option><option value="check">Checking · Team is on it</option><option value="done">Resolved · Issue addressed</option></select><label class="form-label" for="responseInput">Resolution note <span>Shown with the report</span></label><textarea id="responseInput" rows="4" placeholder="e.g. Lights switched off and room checked."></textarea><div class="drawer-actions"><button type="button" class="cancel-btn" id="drawerCancel">Cancel</button><button type="submit" class="save-btn">Save update <span>→</span></button></div></form></aside></div>
+  <div class="admin-toast" id="adminToast" role="status"></div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d24">
+  <title>WattWise — 3D Energy Campus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="campus-3d.css">
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <main class="energy-page">
+    <header class="energy-header">
+      <a class="brand" href="index.html" aria-label="Back to WattWise"><span class="brand-mark">ϟ</span><span>watt<span>wise</span></span></a>
+      <div class="header-note"><i></i> INTERACTIVE CAMPUS PREVIEW</div>
+      <a class="back-link" href="index.html">← Back to WattWise</a>
+    </header>
+
+    <section class="intro">
+      <div class="intro-copy">
+        <div class="eyebrow"><span></span> ENERGY YOU CAN SEE</div>
+        <h1>A campus in<br><em>a brighter light.</em></h1>
+        <p>Explore the buildings. Spot where energy is being wasted. See how one small fix can change the picture.</p>
+        <div class="intro-hint"><span class="hint-icon">↗</span> Select a building to inspect its energy pulse</div>
+      </div>
+      <div class="scene-card" aria-label="Interactive 3D campus model">
+        <div class="scene-topline"><span><i></i> HACKCULT UNIVERSITY</span><span class="preview-badge">CONCEPT MODEL</span></div>
+        <div class="scene">
+          <div class="scene-glow"></div>
+          <div class="campus-ground">
+            <div class="ground-grid"></div>
+            <div class="walkway walkway-one"></div><div class="walkway walkway-two"></div><div class="walkway walkway-three"></div>
+            <div class="green-patch patch-one"></div><div class="green-patch patch-two"></div><div class="green-patch patch-three"></div>
+            <button class="building building-library issue-hot" data-building="library" aria-label="Inspect Library, open energy report">
+              <span class="building-label">LIBRARY</span><span class="b-roof"></span><span class="b-face b-front"><i></i><i></i><i></i><i></i></span><span class="b-face b-side"><i></i><i></i><i></i></span><span class="issue-pin">!</span>
+            </button>
+            <button class="building building-science" data-building="science" aria-label="Inspect Science Block">
+              <span class="building-label">SCIENCE BLOCK</span><span class="b-roof"></span><span class="b-face b-front"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="b-face b-side"><i></i><i></i><i></i><i></i></span><span class="issue-pin pin-green">✓</span>
+            </button>
+            <button class="building building-residence issue-warn" data-building="residence" aria-label="Inspect Residence Hall, energy check in progress">
+              <span class="building-label">RESIDENCE HALL</span><span class="b-roof"></span><span class="b-face b-front"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="b-face b-side"><i></i><i></i><i></i><i></i></span><span class="issue-pin pin-amber">···</span>
+            </button>
+            <button class="building building-centre" data-building="centre" aria-label="Inspect Student Centre">
+              <span class="building-label">STUDENT CENTRE</span><span class="b-roof"></span><span class="b-face b-front"><i></i><i></i><i></i><i></i></span><span class="b-face b-side"><i></i><i></i></span>
+            </button>
+            <div class="lamp lamp-one"><i></i></div><div class="lamp lamp-two"><i></i></div><div class="tree tree-one"><i></i><b></b></div><div class="tree tree-two"><i></i><b></b></div><div class="tree tree-three"><i></i><b></b></div>
+          </div>
+          <div class="scene-compass"><span>N</span><b>↑</b></div>
+          <div class="scene-caption">A small campus. A big opportunity.</div>
+        </div>
+        <div class="scene-legend"><span><i class="legend-red"></i> Needs attention</span><span><i class="legend-amber"></i> Being checked</span><span><i class="legend-green"></i> Resolved</span></div>
+      </div>
+    </section>
+
+    <section class="energy-console" aria-label="Energy saving preview">
+      <div class="console-copy"><span class="console-label">A QUICK SCENARIO</span><h2 id="scenarioTitle">The Library: a light left on.</h2><p id="scenarioDescription">An empty reading room is using power. Imagine the moment someone notices and reports it.</p></div>
+      <div class="energy-meter"><div class="meter-heading"><span>ROOM ENERGY</span><b id="energyState">WASTING</b></div><div class="meter-track"><span id="meterFill"></span></div><div class="meter-scale"><span>LOW</span><span>HIGH</span></div></div>
+      <button class="save-toggle" id="saveToggle" type="button" aria-pressed="false"><span class="toggle-icon">ϟ</span><span><b id="toggleTitle">Show the fix</b><small id="toggleSub">Preview lights switching off</small></span><span class="toggle-arrow">→</span></button>
+    </section>
+
+    <section class="building-detail" id="buildingDetail" aria-live="polite">
+      <div class="detail-icon" id="detailIcon">!</div>
+      <div class="detail-copy"><span class="detail-kicker" id="detailKicker">OPEN REPORT · LIBRARY</span><h2 id="detailTitle">Lights left on in the reading room</h2><p id="detailText">A student spotted an empty room with lights still on. A report helps campus facilities follow up.</p></div>
+      <div class="detail-status"><span id="detailStatus">Needs attention</span><small>Illustrative preview</small></div>
+    </section>
+
+    <footer class="energy-footer"><span>WattWise · Campus energy, made visible</span><span>Prototype illustration · No live building or meter data</span><a href="index.html">Return to the current website ↗</a></footer>
+  </main>
+  <script src="campus-3d.js" defer></script>
+  <script src="theme.js" defer></script>
+</body>
+</html>
